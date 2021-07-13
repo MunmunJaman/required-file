@@ -1,0 +1,51 @@
+// owl carousel slider play and pause icon 
+
+var owl = jQuery('.sliders.owl-carousel');
+// Play / Pause for slider
+	jQuery("#play").click(function(){
+		owl.trigger('stop.owl.autoplay');
+	});
+
+	jQuery("#stop").click(function(){
+		owl.trigger('play.owl.autoplay',[1000]);
+	});
+
+	// Control slider from Keyboard
+	jQuery(document.documentElement).keyup(function (event) {
+
+    if (event.keyCode === 13) {
+			var play_id = jQuery('#play');
+			var stop_id = jQuery('#stop');
+			console.log(play_id)
+
+			if(play_id.hasClass("play")){
+				owl.trigger('stop.owl.autoplay');
+				play_id.removeClass('play');
+				play_id.css("display", "none");
+				stop_id.css("display", "block");
+			}
+			else{
+				owl.trigger('play.owl.autoplay',[1000]);
+				play_id.addClass('play');
+				play_id.css("display", "block");
+				stop_id.css("display", "none");
+			}
+    }
+	});
+});
+
+// Play Carousel
+function playCarousel() {
+	var play_id = document.getElementById( 'play' );
+	var stop_id = document.getElementById( 'stop' );
+	play_id.style.display = 'none';
+	stop_id.style.display = 'block';
+}
+
+// Stop Carousel
+function stopCarousel() {
+	var play_id = document.getElementById( 'play' );
+	var stop_id = document.getElementById( 'stop' );
+	play_id.style.display = 'block';
+	stop_id.style.display = 'none';
+}
